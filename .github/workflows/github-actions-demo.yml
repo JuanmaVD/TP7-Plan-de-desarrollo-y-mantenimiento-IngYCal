@@ -1,0 +1,68 @@
+name: CI/CD Pipeline
+
+# Ejecutar solo cuando se crea un Pull Request hacia la rama develop
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Clonar el código
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Paso 2: Configurar Node.js (puedes cambiar la versión si es necesario)
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Usa la versión que estés utilizando en tu proyecto
+
+      # Paso 3: Instalar dependencias del proyecto
+      - name: Install Dependencies
+        run: npm install
+
+      # Paso 4: Ejecutar las pruebas unitarias
+      - name: Run Unit Tests
+        run: npm run test -- --coverage
+
+      # Paso 5: Ejecutar pruebas de integración (si existen)
+      - name: Run Integration Tests
+        if: exists('integration-test') # Puedes omitir esto si no tienes pruebas de integración
+        run: npm run integration-test
+
+      # Paso 6: Ejecutar el linter para verificar buenas prácticas
+      - name: Run ESLint
+        run: npm run lint
+
+      # Paso 7: Verificar que el código esté correctamente formateado
+      - name: Check Code Format
+        run: npm run format-check
+
+      # Paso 8: Compilar el proyecto (si aplica)
+      - name: Build Project
+        run: npm run build
+
+  # Despliegue solo cuando se hace merge a la rama develop
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Despliegue a Firebase Hosting
+      - name: Deploy to Firebase
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
