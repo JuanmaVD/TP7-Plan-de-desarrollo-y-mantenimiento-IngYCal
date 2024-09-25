@@ -3,7 +3,7 @@ module.exports = {
   extensionsToTreatAsEsm: ['.js'],
   globals: {
     'ts-jest': {
-      useESM: true,
+      useESM: false,
     },
   },
   moduleNameMapper: {
