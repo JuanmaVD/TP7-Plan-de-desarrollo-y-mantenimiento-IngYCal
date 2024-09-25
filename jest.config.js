@@ -1,6 +1,5 @@
 module.exports = {
   transform: {},
-  extensionsToTreatAsEsm: ['.js'],
   globals: {
     'ts-jest': {
       useESM: false,
