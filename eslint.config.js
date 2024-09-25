@@ -16,10 +16,11 @@ export default [
       sourceType: 'module',
       globals: {
         describe: 'readonly',
+        
         beforeEach: 'readonly',
         test: 'readonly',
         expect: 'readonly',
-        console: 'readonly'
+        console: 'readonly',
       },
     },
     linterOptions: {
