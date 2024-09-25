@@ -1,5 +1,4 @@
-// main.js
-import Calculadora from './calculadora.js';
+const Calculadora = require('./calculadora');
 
 const calc = new Calculadora();
 
