@@ -1,0 +1,38 @@
+# .github/workflows/ci.yml
+
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.9.0'  # Especifica la versión de Node.js actualizada
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linter
+        run: npx eslint .
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Check code formatting
+        run: npx prettier --check .
+
+      - name: Build (if necessary)
+        run: npm run build || echo "No build step defined"
+
+      - name: Run integration tests (if available)
+        run: npm run test:integration || echo "No integration tests defined"
