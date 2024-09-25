@@ -1,5 +1,5 @@
 // calculadora.js
-export default class Calculadora {
+class Calculadora {
   sumar(a, b) {
     return a + b;
   }
@@ -19,4 +19,6 @@ export default class Calculadora {
     return a / b;
   }
 }
+
+module.exports = Calculadora
 
