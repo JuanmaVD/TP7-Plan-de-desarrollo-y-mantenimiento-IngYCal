@@ -1,4 +1,4 @@
-import Calculadora from './calculadora.js';
+const Calculadora = require('./calculadora.js');
 
 describe('Calculadora', () => {
   let calc;
