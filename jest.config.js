@@ -1,13 +1,12 @@
-export default {
-    transform: {},
-    extensionsToTreatAsEsm: ['.js'],
-    globals: {
-      'ts-jest': {
-        useESM: true,
-      },
+module.exports = {
+  transform: {},
+  extensionsToTreatAsEsm: ['.js'],
+  globals: {
+    'ts-jest': {
+      useESM: true,
     },
-    moduleNameMapper: {
-      '^(\\.{1,2}/.*)\\.js$': '$1',
-    },
-  };
-  
+  },
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
+};
