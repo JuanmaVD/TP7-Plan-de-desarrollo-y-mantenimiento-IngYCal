@@ -5,7 +5,7 @@ const rules = {
   'no-console': 'off',
 };
 
-export default [
+module.exports = [
   {
     ignores: ['node_modules/**'], // Ignora la carpeta node_modules
   },
@@ -13,13 +13,14 @@ export default [
     files: ['**/*.js'], // Aplica configuración a archivos .js
     languageOptions: {
       ecmaVersion: 12,
-      sourceType: 'module',
+      sourceType: 'commonjs',
       globals: {
         describe: 'readonly',
+        
         beforeEach: 'readonly',
         test: 'readonly',
         expect: 'readonly',
-        console: 'readonly'
+        console: 'readonly',
       },
     },
     linterOptions: {
