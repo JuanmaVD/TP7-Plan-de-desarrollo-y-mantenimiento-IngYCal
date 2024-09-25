@@ -27,4 +27,3 @@ describe('Calculadora', () => {
     expect(() => calc.dividir(10, 0)).toThrow('No se puede dividir por cero');
   });
 });
-

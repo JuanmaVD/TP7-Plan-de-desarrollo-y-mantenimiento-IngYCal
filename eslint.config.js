@@ -16,7 +16,7 @@ module.exports = [
       sourceType: 'commonjs',
       globals: {
         describe: 'readonly',
-        
+
         beforeEach: 'readonly',
         test: 'readonly',
         expect: 'readonly',

@@ -10,7 +10,6 @@ class Calculadora {
 
   multiplicar(a, b) {
     return a * b;
-    
   }
 
   dividir(a, b) {
@@ -21,5 +20,4 @@ class Calculadora {
   }
 }
 
-module.exports = Calculadora
-
+module.exports = Calculadora;
