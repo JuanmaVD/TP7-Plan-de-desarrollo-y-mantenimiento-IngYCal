@@ -17,5 +17,8 @@ export default [
       'no-undef': 'error',
       'no-console': 'off',
     },
+    env: {
+      jest: true,
+    },
   },
 ];

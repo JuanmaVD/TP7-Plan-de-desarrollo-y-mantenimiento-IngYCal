@@ -1,4 +1,4 @@
-const Calculadora = require('./calculadora');
+import Calculadora from './calculadora.js';
 
 describe('Calculadora', () => {
   let calc;
@@ -27,3 +27,4 @@ describe('Calculadora', () => {
     expect(() => calc.dividir(10, 0)).toThrow('No se puede dividir por cero');
   });
 });
+
