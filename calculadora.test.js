@@ -21,7 +21,6 @@ describe('Calculadora', () => {
 
   test('dividir 10 / 2 debe ser 5', () => {
     expect(calc.dividir(10, 2)).toBe(5);
-    
   });
 
   test('dividir por cero debe lanzar un error', () => {
